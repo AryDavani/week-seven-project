@@ -6,6 +6,7 @@ const router = require('./routes/router');
 const mongoose = require('mongoose');
 const passport = require("passport");
 const BasicStrategy = require("passport-http").BasicStrategy;
+const User = require('./models/users.js');
 
 const app = express();
 
@@ -13,6 +14,8 @@ app.use(bodyParser.json());
 
 mongoose.Promise = require('bluebird');
 mongoose.connect('mongodb://localhost:27017/statsdb');
+
+app.use(passport.initialize());
 
 passport.use(new BasicStrategy(
   function(username, password, done) {
@@ -25,6 +28,7 @@ passport.use(new BasicStrategy(
     });
   }
 ));
+
 
 router(app);
 

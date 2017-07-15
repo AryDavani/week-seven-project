@@ -6,8 +6,7 @@ const activitySchema = new mongoose.Schema({
     day: {type: Date, required: true, default: Date.now},
     units: {type: String, required: true},
     number: {type: Number, required: true}
-  },
-  user: {type: mongoose.Schema.ObjectId}
+  }
 });
 
 
